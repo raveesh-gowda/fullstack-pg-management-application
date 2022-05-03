@@ -7,7 +7,13 @@ export const startGetTenants = () => {
          .then((response) => {
             dispatch(setTenants(response.data));
          })
-         .catch((err) => console.log(err));
+         .catch((err) =>
+            swal({
+               title: `${err.message}`,
+               icon: "error",
+               button: "OK",
+            })
+         );
    };
 };
 
@@ -27,7 +33,13 @@ export const startAddTenant = (formData, reset) => {
             dispatch(addTenant(response.data));
             reset();
          })
-         .catch((err) => console.log(err));
+         .catch((err) =>
+            swal({
+               title: `${err.message}`,
+               icon: "error",
+               button: "OK",
+            })
+         );
    };
 };
 
@@ -46,7 +58,13 @@ export const startEditTenant = (formData, reset, id) => {
             dispatch(editTenant(response.data));
             reset();
          })
-         .catch((err) => console.log(err));
+         .catch((err) =>
+            swal({
+               title: `${err.message}`,
+               icon: "error",
+               button: "OK",
+            })
+         );
    };
 };
 
@@ -64,7 +82,13 @@ export const startRemoveTenant = (_id) => {
          .then((response) => {
             dispatch(removeTenant(response.data));
          })
-         .catch((err) => console.log(err));
+         .catch((err) =>
+            swal({
+               title: `${err.message}`,
+               icon: "error",
+               button: "OK",
+            })
+         );
    };
 };
 

@@ -42,4 +42,4 @@ The frontend of this repository is built using React JS and Redux. The applicati
 8,  <a href="https://sweetalert.js.org/" target="_blank"> Sweetalert </a> 
 
 
-### Functionalities of UI has been completed. Design part is yet to be completed. Thank you for reading.
+### Functionalities of UI has been completed. Design part is yet to be done. Thank you for reading.

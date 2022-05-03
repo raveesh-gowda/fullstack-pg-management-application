@@ -7,7 +7,7 @@ const buildingsController = require("../app/controller/buildingsController");
 const roomsController = require("../app/controller/roomsController");
 const tenantsController = require("../app/controller/tenantsController");
 
-//users
+//user authentication 
 router.post("/api/user/register", usersController.register);
 router.post("/api/user/login", usersController.login);
 router.get("/api/user/account", authenticateUser, usersController.account);

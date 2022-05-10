@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, withRouter } from "react-router-dom";
 import swal from "sweetalert";
 
 import Home from "./InitialComponents/Home";
@@ -27,7 +27,7 @@ const NavBar = (props) => {
          dispatch(startGetUser());
          dispatch(startGetBuildings());
          dispatch(startGetRooms());
-         dispatch(startGetTenants())
+         dispatch(startGetTenants());
       }
    }, [dispatch]);
 
@@ -56,7 +56,7 @@ const NavBar = (props) => {
          ) : (
             <>
                <Link to="/register">Register</Link> |{" "}
-               <Link to="/login">Login</Link> 
+               <Link to="/login">Login</Link>
             </>
          )}
          <Route path="/" component={Home} exact={true} />
@@ -84,4 +84,4 @@ const NavBar = (props) => {
    );
 };
 
-export default NavBar;
+export default withRouter(NavBar);

@@ -1,10 +1,11 @@
 import axios from "../../configure/configAxios";
+import { header } from "../../configure/header";
 import swal from "sweetalert";
 
 export const startGetRooms = () => {
    return (dispatch) => {
       axios
-         .get("/rooms")
+         .get("/rooms", { headers: header })
          .then((response) => {
             dispatch(setRooms(response.data));
          })
@@ -28,7 +29,7 @@ export const setRooms = (data) => {
 export const startAddRoom = (formData) => {
    return (dispatch) => {
       axios
-         .post(`/rooms`, formData)
+         .post(`/rooms`,{ headers: header }, formData)
          .then((response) => {
             dispatch(addRoom(response.data));
          })
@@ -52,7 +53,7 @@ export const addRoom = (data) => {
 export const startEditRoom = (formData, handleToggle, id) => {
    return (dispatch) => {
       axios
-         .put(`/rooms/${id}`, formData)
+         .put(`/rooms/${id}`,{ headers: header }, formData)
          .then((response) => {
             dispatch(editRoom(response.data));
             handleToggle();
@@ -77,7 +78,7 @@ export const editRoom = (data) => {
 export const startRemoveRoom = (_id) => {
    return (dispatch) => {
       axios
-         .delete(`/rooms/${_id}`)
+         .delete(`/rooms/${_id}`, { headers: header })
          .then((response) => {
             dispatch(removeRoom(response.data));
          })

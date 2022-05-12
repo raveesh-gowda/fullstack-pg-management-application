@@ -1,9 +1,11 @@
 import axios from "../../configure/configAxios";
+import swal from "sweetalert"
+import {header} from "../../configure/header"
 
 export const startGetTenants = () => {
    return (dispatch) => {
       axios
-         .get("/tenants")
+         .get("/tenants", { headers: header })
          .then((response) => {
             dispatch(setTenants(response.data));
          })
@@ -27,7 +29,7 @@ export const setTenants = (data) => {
 export const startAddTenant = (formData, reset) => {
    return (dispatch) => {
       axios
-         .post(`/tenants`, formData)
+         .post(`/tenants`,{ headers: header }, formData)
          .then((response) => {
             // console.log(response.data);
             dispatch(addTenant(response.data));
@@ -53,7 +55,7 @@ export const addTenant = (data) => {
 export const startEditTenant = (formData, reset, id) => {
    return (dispatch) => {
       axios
-         .put(`/tenants/${id}`, formData)
+         .put(`/tenants/${id}`,{ headers: header }, formData)
          .then((response) => {
             dispatch(editTenant(response.data));
             reset();
@@ -78,7 +80,7 @@ export const editTenant = (data) => {
 export const startRemoveTenant = (_id) => {
    return (dispatch) => {
       axios
-         .delete(`/tenants/${_id}`)
+         .delete(`/tenants/${_id}`, { headers: header })
          .then((response) => {
             dispatch(removeTenant(response.data));
          })

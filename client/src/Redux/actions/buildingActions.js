@@ -1,10 +1,11 @@
 import axios from "../../configure/configAxios";
+import {header} from "../../configure/header"
 import swal from "sweetalert";
 
 export const startGetBuildings = () => {
    return (dispatch) => {
       axios
-         .get("/buildings")
+         .get("/buildings", { headers: header })
          .then((response) => {
             dispatch(setBuildings(response.data));
          })
@@ -28,7 +29,7 @@ export const setBuildings = (data) => {
 export const startAddBuilding = (formData) => {
    return (dispatch) => {
       axios
-         .post("/buildings", formData)
+         .post("/buildings",{ headers: header }, formData)
          .then((response) => {
             dispatch(addBuilding(response.data));
          })
@@ -52,7 +53,7 @@ export const addBuilding = (data) => {
 export const startEditBuilding = (formData, id, handleToggle) => {
    return (dispatch) => {
       axios
-         .put(`/buildings/${id}`, formData)
+         .put(`/buildings/${id}`, { headers: header },formData)
          .then((response) => {
             dispatch(editBuilding(response.data));
             handleToggle();
@@ -77,7 +78,7 @@ export const editBuilding = (data) => {
 export const startRemoveBuilding = (_id) => {
    return (dispatch) => {
       axios
-         .delete(`/buildings/${_id}`)
+         .delete(`/buildings/${_id}`, { headers: header })
          .then((response) => {
             dispatch(removeBuilding(response.data));
          })

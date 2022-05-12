@@ -13,24 +13,28 @@ router.post("/api/user/login", usersController.login);
 router.get("/api/user/account", authenticateUser, usersController.account);
 
 //buildings
-router.get("/api/buildings", buildingsController.list);
-router.post("/api/buildings", buildingsController.create);
-router.get("/api/buildings/:id", buildingsController.show);
-router.put("/api/buildings/:id", buildingsController.update);
-router.delete("/api/buildings/:id", buildingsController.destroy);
+router.get("/api/buildings", authenticateUser, buildingsController.list);
+router.post("/api/buildings", authenticateUser, buildingsController.create);
+router.get("/api/buildings/:id", authenticateUser, buildingsController.show);
+router.put("/api/buildings/:id", authenticateUser, buildingsController.update);
+router.delete(
+   "/api/buildings/:id",
+   authenticateUser,
+   buildingsController.destroy
+);
 
 //rooms
-router.get("/api/rooms", roomsController.list);
-router.post("/api/rooms", roomsController.create);
-router.get("/api/rooms/:id", roomsController.show);
-router.put("/api/rooms/:id", roomsController.update);
-router.delete("/api/rooms/:id", roomsController.destroy);
+router.get("/api/rooms", authenticateUser, roomsController.list);
+router.post("/api/rooms", authenticateUser, roomsController.create);
+router.get("/api/rooms/:id", authenticateUser, roomsController.show);
+router.put("/api/rooms/:id", authenticateUser, roomsController.update);
+router.delete("/api/rooms/:id", authenticateUser, roomsController.destroy);
 
 //tenants
-router.get("/api/tenants", tenantsController.list);
-router.post("/api/tenants", tenantsController.create);
-router.get("/api/tenants/:id", tenantsController.show);
-router.put("/api/tenants/:id", tenantsController.update);
-router.delete("/api/tenants/:id", tenantsController.destroy);
+router.get("/api/tenants", authenticateUser, tenantsController.list);
+router.post("/api/tenants", authenticateUser, tenantsController.create);
+router.get("/api/tenants/:id", authenticateUser, tenantsController.show);
+router.put("/api/tenants/:id", authenticateUser, tenantsController.update);
+router.delete("/api/tenants/:id", authenticateUser, tenantsController.destroy);
 
 module.exports = router;
